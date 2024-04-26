@@ -1,0 +1,38 @@
+#root {
+  /* max-width: 1280px; */
+  /* width: 100%; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  /* text-align: center; */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0;
+  background-color: #0d162e;
+}
+
+.common {
+  max-width: 1280px;
+  /* width: 100%; */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.common-flex {
+  max-width: 1280px;
+  /* width: 100%; */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
