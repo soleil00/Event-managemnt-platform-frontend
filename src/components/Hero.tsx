@@ -20,10 +20,7 @@ export const Hero = () => {
         <Link className="px-5 py-3 rounded-3xl bg-[#32C0EF] text-white" to="/">
           Get Started
         </Link>
-        <Link
-          className=" px-5 py-3 rounded-3xl bg-orange-400 text-white"
-          to="/"
-        >
+        <Link className=" px-5 py-3 rounded-3xl bg-[#ea0c66] text-white" to="/">
           Explore Events
         </Link>
       </div>

@@ -1,10 +1,13 @@
 import { Stack, Typography } from "@mui/material";
-import React from "react";
+
 import { Link } from "react-router-dom";
 
 export const Creative = () => {
   return (
     <div className=" bg-white">
+      {/* <SwiperSlide>
+        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+      </SwiperSlide> */}
       <Stack
         className="p-[20px] common gap-3"
         direction={{ xs: "column-reverse", sm: "column", md: "row" }}
@@ -18,7 +21,11 @@ export const Creative = () => {
         </div>
         <div className="flex flex-1 flex-col gap-5">
           {/* <h1>Unlock Creative Potential</h1> */}
-          <Typography variant="h3" className="text-[#EB0E66] font-extrabold">
+          <Typography
+            variant="h3"
+            className="text-[#EB0E66] font-extrabold"
+            fontSize={{ xs: "30px", sm: "35px", md: "45px" }}
+          >
             {" "}
             Unlock Creative Potential
           </Typography>

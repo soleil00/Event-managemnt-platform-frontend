@@ -1,18 +1,4 @@
-import {
-  ArrowRight,
-  KeyboardArrowLeft,
-  KeyboardArrowLeftOutlined,
-  KeyboardArrowRight,
-} from "@mui/icons-material";
-import {
-  Button,
-  Divider,
-  Fab,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import React from "react";
+import { Stack, Typography } from "@mui/material";
 
 export const Planning = () => {
   return (
@@ -42,27 +28,6 @@ export const Planning = () => {
           ticketing options. Streamline your planning process and bring your
           vision to reality.
         </Typography>
-      </Stack>
-      <Stack direction={"row"} className="gap-[200px] common items-center">
-        <div className=" w-full h-1 bg-gray-300 rounded-md"></div>
-        <Stack direction={"row"} className="gap-5">
-          <Fab
-            aria-label="add"
-            sx={{
-              background: "#0D162E",
-              border: "1px solid white",
-              ":hover": { background: "#EB0E66", border: "none" },
-            }}
-          >
-            <KeyboardArrowLeft className="text-white" />
-          </Fab>
-          <Fab
-            aria-label="add"
-            sx={{ background: "#32C0EF", ":hover": { background: "#32C0EF" } }}
-          >
-            <KeyboardArrowRight />
-          </Fab>
-        </Stack>
       </Stack>
     </div>
   );
