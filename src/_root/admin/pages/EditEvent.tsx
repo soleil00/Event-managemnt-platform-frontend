@@ -226,7 +226,7 @@ export const EditEvent = () => {
             fullWidth
             size="small"
             value={numTickets}
-            onChange={(e) => setNumTickets(e.target.value)}
+            onChange={(e) => setNumTickets(parseInt(e.target.value))}
             InputProps={{ sx: { borderRadius: "20px" } }}
             placeholder="Number of Tickets or Seats"
             focused={false}

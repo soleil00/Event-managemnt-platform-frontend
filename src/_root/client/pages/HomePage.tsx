@@ -27,7 +27,7 @@ export const HomePage = () => {
     getUser()
       .then((res) => res)
       .catch((err) => console.log(err));
-  }, [getUser]);
+  }, []);
 
   return (
     <div>

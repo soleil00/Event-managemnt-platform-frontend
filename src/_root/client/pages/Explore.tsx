@@ -6,11 +6,19 @@ import { EventCategories } from "../../../components/EventCategories";
 import Api from "../../../services/api";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/Provider";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "../../../styles/explore.css";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 export const Explore = () => {
   const [events, setEvents] = useState([]);
-
   const { refetch } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const eventService = new Api();
 
@@ -46,13 +54,32 @@ export const Explore = () => {
         <div className="my-4">
           <Grid container spacing={{ xs: 2, md: 3 }} className="mt-4">
             {events.length > 0 ? (
-              <Grid container spacing={{ xs: 2, md: 3 }}>
+              <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination]}
+                className="mySwiper"
+              >
                 {events.map((event) => (
-                  <Grid item xs={12} sm={4} md={3} key={event.id}>
+                  <SwiperSlide
+                    key={event.name}
+                    className=" bg-white rounded-lg"
+                    onClick={() => navigate(`/event/${event._id}`)}
+                  >
                     <EventCard event={event} />
-                  </Grid>
+                  </SwiperSlide>
                 ))}
-              </Grid>
+              </Swiper>
             ) : (
               <div className="w-full h-[100vh] flex justify-center items-center">
                 <CircularProgress />

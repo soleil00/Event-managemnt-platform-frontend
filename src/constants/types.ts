@@ -29,7 +29,7 @@ export interface IEvent {
   location: string;
   category: ICategory;
   image: string;
-  numTickets: number | string;
+  numTickets: number;
   price?: number | string;
   name?: string;
   createdAt?: Date;
