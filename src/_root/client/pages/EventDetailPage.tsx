@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Stack } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { events } from "../../../constants/events";
+// import { useParams } from "react-router-dom";
 import { CurrentEvent } from "../../../components/CurrentEvent";
 import { EventSummary } from "../../../components/EventSummary";
 import { BookEventModel } from "../../../components/BookEventModel";
 
 export const EventDetailPage = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   return (
     <div className="bg-white">
       <Stack

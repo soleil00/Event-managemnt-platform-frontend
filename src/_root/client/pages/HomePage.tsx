@@ -11,11 +11,11 @@ export const HomePage = () => {
   const authService = new Auth();
   const { setCurrentUser, setIsLoggedIn } = useContext(AppContext);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getUser = async () => {
     const token = localStorage.getItem("token");
     try {
       const response = await authService.verifyToken(token!);
-      console.log("from response check  home page ---->", response);
       setCurrentUser(response.user);
       setIsLoggedIn(true);
     } catch (error) {
@@ -27,7 +27,7 @@ export const HomePage = () => {
     getUser()
       .then((res) => res)
       .catch((err) => console.log(err));
-  }, []);
+  }, [getUser]);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { ICategory } from "./categories";
+// import { ICategory } from "./categories";
 
 export interface IBooking {
   _id: string;
@@ -14,7 +14,7 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
-  bookings: any[];
+  bookings: unknown[];
   isAdmin: boolean;
   createdAt?: Date;
   updatedAt?: Date;

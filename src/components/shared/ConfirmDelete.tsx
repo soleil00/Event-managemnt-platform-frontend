@@ -15,7 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const ConfirmDelete = () => {
   const [iseDeleting, setIsDeleting] = useState(false);
-  const { selectedEvent, setSelectedEvent } = useContext(AppContext);
+  const { selectedEvent, setSelectedEvent, setRefetch } =
+    useContext(AppContext);
 
   const eventService = new Api();
 
@@ -25,9 +26,10 @@ export const ConfirmDelete = () => {
 
   const handleConfirm = async () => {
     try {
+      setRefetch((val) => !val);
       setIsDeleting(true);
       const response = await eventService.deleteSingleEvent(selectedEvent._id);
-      console.log(response);
+      toast.success(response?.message, { autoClose: 1000 });
     } catch (error) {
       toast.error("yesy", { autoClose: 1000 });
       console.log(error);
@@ -40,7 +42,9 @@ export const ConfirmDelete = () => {
 
   return (
     <Dialog open={Boolean(selectedEvent)} fullWidth onClose={handleCancel}>
+      <ToastContainer />
       <DialogTitle className="text-center">Confirm Deletion</DialogTitle>
+
       <DialogContent>
         <Box>
           <p>
@@ -71,7 +75,6 @@ export const ConfirmDelete = () => {
           {!iseDeleting ? "Confirm" : "Deleting..."}
         </Button>
       </DialogActions>
-      <ToastContainer />
     </Dialog>
   );
 };

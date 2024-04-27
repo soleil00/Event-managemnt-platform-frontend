@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { IEvent } from "../constants/types";
 
@@ -46,7 +47,11 @@ class Api {
 
   async deleteSingleEvent(id: string) {
     try {
-      const response = await axios.delete(`${this.baseUrl}/${id}`);
+      const response = await axios.delete(`${this.baseUrl}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       console.log("model----> : " + response);
       return response.data;
@@ -55,12 +60,13 @@ class Api {
     }
   }
 
-  async updateSingleEvent(id: string, eventData: any) {
+  async updateSingleEvent(id: string, eventData: FormData) {
     try {
-      const response = await axios.put(
-        `${this.baseUrl}/events/${id}`,
-        eventData
-      );
+      const response = await axios.put(`${this.baseUrl}/${id}`, eventData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     } catch (error: any) {
       throw new Error(`Error updating event: ${error.message}`);
@@ -69,7 +75,7 @@ class Api {
 
   async cancelEvent(id) {
     try {
-      const response = await axios.put(`${this.baseUrl}/events/${id}/cancel`);
+      const response = await axios.put(`${this.baseUrl}/${id}/cancel`);
       return response.data;
     } catch (error: any) {
       throw new Error(`Error canceling event: ${error.message}`);
@@ -78,9 +84,7 @@ class Api {
 
   async cancelBooking(id) {
     try {
-      const response = await axios.post(
-        `${this.baseUrl}/events/${id}/cancel-booking`
-      );
+      const response = await axios.post(`${this.baseUrl}/${id}/cancel-booking`);
       return response.data;
     } catch (error: any) {
       throw new Error(`Error canceling booking: ${error.message}`);
@@ -89,7 +93,7 @@ class Api {
 
   async bookEvent(id) {
     try {
-      const response = await axios.post(`${this.baseUrl}/events/${id}/book`);
+      const response = await axios.post(`${this.baseUrl}/${id}/book`);
       return response.data;
     } catch (error: any) {
       throw new Error(`Error booking event: ${error.message}`);

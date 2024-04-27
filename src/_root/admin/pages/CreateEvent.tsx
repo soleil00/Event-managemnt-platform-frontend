@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { useState } from "react";
 import { Close, Upload } from "@mui/icons-material";
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "../../../services/api";
-import axios from "axios";
 
 export const CreateEvent = () => {
   const [title, setTitle] = useState("");
@@ -30,6 +30,7 @@ export const CreateEvent = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
+        //@ts-ignore
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(selectedImage);

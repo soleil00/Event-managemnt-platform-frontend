@@ -1,7 +1,10 @@
 import { Close, Upload } from "@mui/icons-material";
 import { Button, Stack, TextField, Typography } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/Provider";
+import Api from "../../../services/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditEvent = () => {
   const { selectedEvent, setSelectedEvent } = useContext(AppContext);
@@ -14,9 +17,11 @@ export const EditEvent = () => {
   const [numTickets, setNumTickets] = useState(selectedEvent?.numTickets);
   const [image, setImage] = useState(selectedEvent?.image);
   const [imagePreview, setImagePreview] = useState(selectedEvent?.image);
-  const [termsAndConditions, setTermsAndConditions] = useState(
-    "some terms and condiction"
-  );
+  const [termsAndConditions, setTermsAndConditions] =
+    useState("selectedEvent.term");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const eventService = new Api();
 
   const handleFileChange = (event) => {
     const selectedImage = event.target.files[0];
@@ -27,7 +32,6 @@ export const EditEvent = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
-        //@ts-ignore
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(selectedImage);
@@ -35,15 +39,48 @@ export const EditEvent = () => {
   };
 
   useEffect(() => {
+    console.log("selected task her -----> : ", selectedEvent);
     return () => {
       setSelectedEvent(null);
     };
-  }, []);
+  }, [selectedEvent, setSelectedEvent]);
+
+  const handleEdit = async () => {
+    console.log("clicked");
+    try {
+      setIsLoading(true);
+      const formdata = new FormData();
+      formdata.append("image", image);
+      formdata.append("name", title);
+      formdata.append("description", description);
+      formdata.append("type", medium);
+      formdata.append("location", location);
+      formdata.append("price", 20);
+      formdata.append("date", startDate);
+      formdata.append("numTickets", numTickets);
+      formdata.append("term", termsAndConditions);
+
+      const response = await eventService.updateSingleEvent(
+        selectedEvent?._id,
+        formdata
+      );
+
+      console.log(response);
+      toast.success(response?.message, { autoClose: 1000 });
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      toast.error(error, { autoClose: 1000 });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div>
       <Typography variant="h5">Edit an Event</Typography>
       <Stack className="mt-3">
+        <ToastContainer />
         <div className="mb-4">
           <label
             htmlFor="title"
@@ -244,8 +281,17 @@ export const EditEvent = () => {
             InputProps={{ sx: { borderRadius: "20px" } }}
             placeholder="Event Terms and Conditions"
             focused={false}
+            className="mb-4"
           />
         </div>
+        <Button
+          onClick={handleEdit}
+          variant="contained"
+          color="primary"
+          className="my-4"
+        >
+          {isLoading ? "Editing..." : "Confirm Edit"}
+        </Button>
       </Stack>
     </div>
   );

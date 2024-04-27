@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 
 export interface IFeature {
-  icon: any;
+  icon: unknown;
   header: string;
   description: string;
 }

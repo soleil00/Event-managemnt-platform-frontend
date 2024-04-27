@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Stack } from "@mui/material";
 import { Outlet } from "react-router";
 import { Header } from "./pages/Header";
@@ -19,7 +20,7 @@ const AdminLayout = () => {
 
   useEffect(() => {
     if (!isLoggedIn || !currentUser?.isAdmin) navigate("/");
-  }, []);
+  }, [currentUser?.isAdmin, isLoggedIn, navigate]);
 
   return (
     <Stack

@@ -1,5 +1,4 @@
-import { Stack, Typography } from "@mui/material";
-import React from "react";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Hero = () => {

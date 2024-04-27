@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     console.log(" from nav bar check ---> ", currentUser);
-  }, []);
+  }, [currentUser]);
 
   console.log;
   return (

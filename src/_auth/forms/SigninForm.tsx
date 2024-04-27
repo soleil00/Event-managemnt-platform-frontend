@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CatchingPokemon, KeyboardArrowLeft } from "@mui/icons-material";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

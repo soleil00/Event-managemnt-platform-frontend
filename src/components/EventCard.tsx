@@ -3,10 +3,13 @@ import { useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { IEvent } from "../constants/events";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EventCard = ({ event }: { event: IEvent }) => {
-  const { setSelectedEvent } = useContext(AppContext);
-  const navigate = useNavigate(); // Define navigate hook here
+  const { setSelectedEvent, currentUser } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const handleEdit = (event: IEvent) => {
     setSelectedEvent(event);
@@ -15,6 +18,7 @@ export const EventCard = ({ event }: { event: IEvent }) => {
 
   return (
     <div className=" shadow-2xl relative">
+      <ToastContainer />
       <div className="relative">
         <img
           src={`${event.image}`}
@@ -27,24 +31,26 @@ export const EventCard = ({ event }: { event: IEvent }) => {
       </div>
       <h2 className="p-2 ">{event.description}</h2>
       <p className=" absolute top-3 right-3 bg-yellow-200 p-2">date</p>
-      <div className="flex justify-between items-center p-2">
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={() => handleEdit(event)}
-        >
-          Edit
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={() => setSelectedEvent(event)}
-        >
-          Delete
-        </Button>
-      </div>
+      {currentUser?.isAdmin && (
+        <div className="flex justify-between items-center p-2">
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            onClick={() => handleEdit(event)}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            onClick={() => setSelectedEvent(event)}
+          >
+            Delete
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
