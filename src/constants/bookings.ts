@@ -1,0 +1,42 @@
+export const dummyBookings = [
+  {
+    id: 1,
+    eventName: "Music Concert",
+    eventDate: "2024-05-15",
+    eventLocation: "Concert Hall",
+    numTickets: 2,
+    status: "Confirmed",
+  },
+  {
+    id: 2,
+    eventName: "Art Exhibition",
+    eventDate: "2024-06-20",
+    eventLocation: "Art Gallery",
+    numTickets: 1,
+    status: "Pending",
+  },
+  {
+    id: 3,
+    eventName: "Food Festival",
+    eventDate: "2024-07-10",
+    eventLocation: "City Park",
+    numTickets: 3,
+    status: "Cancelled",
+  },
+  {
+    id: 4,
+    eventName: "Food Festival",
+    eventDate: "2024-07-10",
+    eventLocation: "City Park",
+    numTickets: 3,
+    status: "Cancelled",
+  },
+  {
+    id: 5,
+    eventName: "Food Festival",
+    eventDate: "2024-07-10",
+    eventLocation: "City Park",
+    numTickets: 3,
+    status: "Cancelled",
+  },
+];

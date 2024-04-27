@@ -19,7 +19,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 
 export const Features = () => {
   return (
-    <div>
+    <div className="bg-[#0D162E] ">
       <Stack direction={"row"} className="gap-[200px] common items-center">
         <Stack
           className=" w-full h-1 bg-gray-300 rounded-md"

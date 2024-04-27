@@ -3,7 +3,6 @@ import { Creative } from "../components/Creative";
 import { Planning } from "../components/Planning";
 import { Features } from "../components/Features";
 import { Security } from "../components/Security";
-import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
   return (
@@ -13,7 +12,6 @@ export const HomePage = () => {
       <Planning />
       <Features />
       <Security />
-      <Footer />
     </div>
   );
 };

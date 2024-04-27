@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center bg-[#0D162E] p-[20px] common">
+    <nav className="items-center bg-[#0D162E] p-[20px] flex justify-between">
       <Stack direction={"row"} className="justify-center items-center gap-1">
         <CatchingPokemon className="text-white" />
         <h4 className="text-white">SpotLight</h4>
@@ -14,7 +14,7 @@ export const Navbar = () => {
         direction={"row"}
         display={{ xs: "none", sm: "none", md: "flex" }}
       >
-        <Link to="/" className="text-white">
+        <Link to="/explore" className="text-white">
           Explore
         </Link>
         <Link to="/auth/sign-in" className="text-white">
@@ -22,6 +22,15 @@ export const Navbar = () => {
         </Link>
         <Link to="/auth/sign-up" className="text-white">
           Signup
+        </Link>
+        <Link to="/auth/sign-up" className="text-white">
+          Explore
+        </Link>
+        <Link to="/dashboard" className="text-white">
+          Dashboard
+        </Link>
+        <Link to="/admin" className="text-white">
+          Admin
         </Link>
       </Stack>
       <IconButton

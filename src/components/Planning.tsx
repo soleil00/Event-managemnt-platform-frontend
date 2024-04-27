@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 
 export const Planning = () => {
   return (
-    <div>
+    <div className="bg-[#0D162E] ">
       <Stack
         className="common-flex"
         direction={{ xs: "column", sm: "column", md: "row" }}
