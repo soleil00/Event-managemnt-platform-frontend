@@ -22,15 +22,15 @@ export interface IUser {
 }
 
 export interface IEvent {
-  id?: number;
+  _id?: string;
   title?: string;
   description: string;
   date: string;
   location: string;
   category: ICategory;
   image: string;
-  numTickets: number;
-  price?: number;
+  numTickets: number | string;
+  price?: number | string;
   name?: string;
   createdAt?: Date;
   updatedAt?: Date;

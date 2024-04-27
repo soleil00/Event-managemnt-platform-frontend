@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Close, Upload } from "@mui/icons-material";
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
@@ -32,6 +33,7 @@ export const EditEvent = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
+        //@ts-ignore
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(selectedImage);
@@ -57,7 +59,7 @@ export const EditEvent = () => {
       formdata.append("location", location);
       formdata.append("price", "20");
       formdata.append("date", startDate);
-      formdata.append("numTickets", numTickets);
+      formdata.append("numTickets", `${numTickets}`);
       formdata.append("term", termsAndConditions);
 
       const response = await eventService.updateSingleEvent(

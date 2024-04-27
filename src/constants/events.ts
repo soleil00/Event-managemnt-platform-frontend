@@ -2,7 +2,7 @@ import { IEvent } from "./types";
 
 export const events: IEvent[] = [
   {
-    id: 1,
+    _id: "0",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -20,7 +20,7 @@ export const events: IEvent[] = [
     price: 1,
   },
   {
-    id: 2,
+    _id: " 2",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -38,7 +38,7 @@ export const events: IEvent[] = [
     price: 1,
   },
   {
-    id: 3,
+    _id: " 3",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -56,7 +56,7 @@ export const events: IEvent[] = [
     price: 1,
   },
   {
-    id: 4,
+    _id: " 4",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -74,7 +74,7 @@ export const events: IEvent[] = [
     price: 1,
   },
   {
-    id: 5,
+    _id: " 5",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -92,7 +92,7 @@ export const events: IEvent[] = [
     price: 100,
   },
   {
-    id: 6,
+    _id: " 6",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -110,7 +110,7 @@ export const events: IEvent[] = [
     price: 14,
   },
   {
-    id: 7,
+    _id: " 7",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
@@ -128,7 +128,7 @@ export const events: IEvent[] = [
     price: 10,
   },
   {
-    id: 1,
+    _id: " 1",
     title: "Title here",
     description:
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
