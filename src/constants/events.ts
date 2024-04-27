@@ -8,6 +8,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -24,6 +26,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -40,6 +44,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -56,6 +62,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -72,6 +80,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -88,6 +98,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -104,6 +116,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
@@ -120,6 +134,8 @@ export const events: IEvent[] = [
       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolores quas sapiente deserunt, fugit accusamus nulla omnis modi ad! Consectetur",
     date: "21 jusly",
     location: "kg arena",
+    status: "ACTIVE",
+    type: "music",
     category: {
       id: 1,
       name: "Music",
