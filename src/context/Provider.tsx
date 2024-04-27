@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { IUser } from "../constants/types";
-import { IEvent } from "../constants/events";
+import { IEvent, IUser } from "../constants/types";
 
 interface AppContextProps {
   isBooking: boolean;
