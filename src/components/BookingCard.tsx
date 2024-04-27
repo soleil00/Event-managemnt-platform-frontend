@@ -1,6 +1,5 @@
 import { Money } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
-import React from "react";
 
 const BookingCard = ({ event }) => {
   const { eventName, eventDate, eventLocation, numTickets } = event;

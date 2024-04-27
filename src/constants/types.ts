@@ -1,4 +1,4 @@
-// import { ICategory } from "./categories";
+import { ICategory } from "./categories";
 
 export interface IBooking {
   _id: string;
@@ -27,7 +27,7 @@ export interface IEvent {
   description: string;
   date: string;
   location: string;
-  // category: ICategory;
+  category: ICategory;
   image: string;
   numTickets: number;
   price?: number;

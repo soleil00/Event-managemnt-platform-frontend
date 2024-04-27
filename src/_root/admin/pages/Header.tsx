@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Add, MenuOutlined } from "@mui/icons-material";
 import { IconButton, Stack } from "@mui/material";
 import React from "react";
@@ -13,6 +14,7 @@ export const Header = ({
       <Stack direction={"row"} className=" items-center justify-between">
         <IconButton
           sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          //@ts-ignore
           onClick={() => setIsOpen((prv) => !prv)}
         >
           <MenuOutlined />

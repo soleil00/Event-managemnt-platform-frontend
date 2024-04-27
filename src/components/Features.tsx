@@ -71,7 +71,7 @@ export const Features = () => {
       >
         {features.map((feature) => (
           <SwiperSlide
-            key={feature.icon}
+            key={feature.header}
             className="flex flex-col gap-3 p-6 bg-white rounded-lg mb-3"
           >
             <Edit />

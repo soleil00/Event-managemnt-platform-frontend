@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -26,6 +27,7 @@ export const ConfirmDelete = () => {
 
   const handleConfirm = async () => {
     try {
+      //@ts-ignore
       setRefetch((val) => !val);
       setIsDeleting(true);
       const response = await eventService.deleteSingleEvent(selectedEvent._id);

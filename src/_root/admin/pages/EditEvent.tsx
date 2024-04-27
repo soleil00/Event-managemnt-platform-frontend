@@ -55,7 +55,7 @@ export const EditEvent = () => {
       formdata.append("description", description);
       formdata.append("type", medium);
       formdata.append("location", location);
-      formdata.append("price", 20);
+      formdata.append("price", "20");
       formdata.append("date", startDate);
       formdata.append("numTickets", numTickets);
       formdata.append("term", termsAndConditions);

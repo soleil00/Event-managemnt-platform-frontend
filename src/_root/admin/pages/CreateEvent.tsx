@@ -60,7 +60,7 @@ export const CreateEvent = () => {
       formdata.append("description", description);
       formdata.append("type", medium);
       formdata.append("location", location);
-      formdata.append("price", 3);
+      formdata.append("price", "3");
       formdata.append("date", startDate);
       formdata.append("numTickets", numTickets);
       formdata.append("term", termsAndConditions);
@@ -84,8 +84,6 @@ export const CreateEvent = () => {
         setTermsAndConditions("");
         setIsLoading(false);
       }
-
-      console.log("agatwe ----->", response);
 
       console.log(response);
     } catch (error) {

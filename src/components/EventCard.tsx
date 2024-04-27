@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../context/Provider";
-import { IEvent } from "../constants/events";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { IEvent } from "../constants/types";
 
 export const EventCard = ({ event }: { event: IEvent }) => {
   const { setSelectedEvent, currentUser } = useContext(AppContext);
