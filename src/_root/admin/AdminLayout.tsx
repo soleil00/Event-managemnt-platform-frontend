@@ -1,16 +1,26 @@
 import { Stack } from "@mui/material";
 import { Outlet } from "react-router";
-import { Header } from "./Header";
+import { Header } from "./pages/Header";
 import { AdminSidebar } from "../../components/AdminSidebar";
 import { AdminDrawer } from "../../components/drawers/AdminDrawer";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/Provider";
+import { useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const { isLoggedIn, currentUser } = useContext(AppContext);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if (!isLoggedIn || !currentUser?.isAdmin) navigate("/");
+  }, []);
+
   return (
     <Stack
       className="bg-white h-[100vh] relative"

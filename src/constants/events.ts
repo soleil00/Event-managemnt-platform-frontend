@@ -1,16 +1,4 @@
-import { ICategory } from "./categories";
-
-export interface IEvent {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-  category: Partial<ICategory>;
-  image: string;
-  numTickets: number;
-  price: number;
-}
+import { IEvent } from "./types";
 
 export const events: IEvent[] = [
   {

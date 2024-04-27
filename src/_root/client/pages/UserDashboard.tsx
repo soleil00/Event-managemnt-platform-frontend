@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import BookingCard from "../components/BookingCard";
-import { dummyBookings } from "../constants/bookings";
+import BookingCard from "../../../components/BookingCard";
+import { dummyBookings } from "../../../constants/bookings";
 
 export const UserDashboard = () => {
   return (

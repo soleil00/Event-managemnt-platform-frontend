@@ -19,10 +19,10 @@ export const AdminSidebar = ({ visible }: { visible: string }) => {
         </div>
         <Stack spacing={3}>
           {links.map((link) => (
-            <Link to={`${link.link}`}>
+            <Link to={`${link.link}`} className="text-[#111827]">
               <Stack direction={"row"} gap={2}>
                 {link.icon}
-                <Typography>{link.name}</Typography>
+                <Typography className=" text-[#B0B3BA]">{link.name}</Typography>
               </Stack>
             </Link>
           ))}
@@ -31,11 +31,11 @@ export const AdminSidebar = ({ visible }: { visible: string }) => {
       <Stack className="mx-auto">
         <Stack direction={"row"} gap={2}>
           <AccountBox />
-          <Typography>Logout</Typography>
+          <Typography className="text-[#B0B3BA]">Logout</Typography>
         </Stack>
         <Stack direction={"row"} gap={2}>
           <Logout />
-          <Typography>Logout</Typography>
+          <Typography className="text-[#B0B3BA]">Logout</Typography>
         </Stack>
       </Stack>
     </Stack>

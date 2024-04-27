@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
-import { EventCard } from "../components/EventCard";
-import { EventCategories } from "../components/EventCategories";
-import { events } from "../constants/events";
+import { EventCard } from "../../../components/EventCard";
+import { EventCategories } from "../../../components/EventCategories";
+import { events } from "../../../constants/events";
 import { Link } from "react-router-dom";
 
 export const Explore = () => {

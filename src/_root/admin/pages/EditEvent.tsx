@@ -1,25 +1,22 @@
-import React, { useState } from "react";
 import { Close, Upload } from "@mui/icons-material";
 import { Button, Stack, TextField, Typography } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Api from "../../../services/api";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../../context/Provider";
 
-export const CreateEvent = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+export const EditEvent = () => {
+  const { selectedEvent, setSelectedEvent } = useContext(AppContext);
+  const [title, setTitle] = useState(selectedEvent?.name);
+  const [description, setDescription] = useState(selectedEvent?.description);
   const [medium, setMedium] = useState("online");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [numTickets, setNumTickets] = useState("");
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState("");
-  const [termsAndConditions, setTermsAndConditions] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const eventService = new Api();
+  const [location, setLocation] = useState(selectedEvent?.location);
+  const [startDate, setStartDate] = useState(selectedEvent?.date);
+  const [endDate, setEndDate] = useState(selectedEvent?.date);
+  const [numTickets, setNumTickets] = useState(selectedEvent?.numTickets);
+  const [image, setImage] = useState(selectedEvent?.image);
+  const [imagePreview, setImagePreview] = useState(selectedEvent?.image);
+  const [termsAndConditions, setTermsAndConditions] = useState(
+    "some terms and condiction"
+  );
 
   const handleFileChange = (event) => {
     const selectedImage = event.target.files[0];
@@ -30,77 +27,22 @@ export const CreateEvent = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
+        //@ts-ignore
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(selectedImage);
     }
   };
 
-  const handleCreateEvent = async () => {
-    if (
-      !title ||
-      !description ||
-      !location ||
-      !startDate ||
-      !endDate ||
-      !numTickets ||
-      !image ||
-      !termsAndConditions
-    ) {
-      toast.error("Please fill out all required fields", { autoClose: 1000 });
-      return;
-    }
-
-    try {
-      setIsLoading(true);
-      const formdata = new FormData();
-      formdata.append("image", image);
-      formdata.append("name", title);
-      formdata.append("description", description);
-      formdata.append("type", medium);
-      formdata.append("location", location);
-      formdata.append("price", 3);
-      formdata.append("date", startDate);
-      formdata.append("numTickets", numTickets);
-      formdata.append("term", termsAndConditions);
-
-      const response = await eventService.createNewEvent(formdata);
-
-      if (response.status === 201) {
-        toast.success("Successfuly created Event", {
-          autoClose: 1000,
-        });
-
-        setTitle("");
-        setDescription("");
-        setMedium("online");
-        setLocation("");
-        setStartDate("");
-        setEndDate("");
-        setNumTickets("");
-        setImage(null);
-        setImagePreview("");
-        setTermsAndConditions("");
-        setIsLoading(false);
-      }
-
-      console.log("agatwe ----->", response);
-
-      console.log(response);
-    } catch (error) {
-      console.error("Error creating event:", error.message);
-      setIsLoading(false);
-      toast.error("Error creating event. Please try again later.", {
-        autoClose: 1000,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  useEffect(() => {
+    return () => {
+      setSelectedEvent(null);
+    };
+  }, []);
 
   return (
     <div>
-      <Typography variant="h5">Create an Event</Typography>
+      <Typography variant="h5">Edit an Event</Typography>
       <Stack className="mt-3">
         <div className="mb-4">
           <label
@@ -304,10 +246,6 @@ export const CreateEvent = () => {
             focused={false}
           />
         </div>
-        <Button variant="contained" color="primary" onClick={handleCreateEvent}>
-          {isLoading ? "Processing..." : "Create an Event"}
-        </Button>
-        <ToastContainer />
       </Stack>
     </div>
   );
