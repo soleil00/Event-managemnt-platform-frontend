@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <div className="w-full h-[60vh] flex flex-col justify-center items-center gap-4 p-[20px]">
+    <div className="w-full h-[60vh] flex flex-col justify-center items-center gap-4 p-[20px] bg-[#0D162E] ">
       <Typography
         variant="h2"
         className="text-white text-center text-wrap"

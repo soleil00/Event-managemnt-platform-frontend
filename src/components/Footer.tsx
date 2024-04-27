@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <div>
-      <footer className="flex justify-between items-center bg-[#0D162E] p-[20px] common">
+    <div className="bg-[#0D162E] ">
+      <footer className="flex justify-between items-center bg-[#0D162E] p-[20px] common ">
         <Stack direction={"row"} className="justify-center items-center gap-1">
           <CatchingPokemon className="text-white" />
           <h4 className="text-white">SpotLight</h4>
