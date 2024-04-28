@@ -9,8 +9,11 @@ class Api {
     "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
   private baseUrl2: string =
     "https://event-managemnt-platform-backend.onrender.com/api/v1/users";
+  private baseUrl3: string =
+    "https://event-managemnt-platform-backend.onrender.com/api/v1/bookings";
   // private baseUrl: string = "http://localhost:4000/api/v1/events";
   // private baseUrl2: string = "http://localhost:4000/api/v1/users";
+  // private baseUrl3: string = "http://localhost:4000/api/v1/bookings";
 
   async getAllEvents() {
     try {
@@ -65,9 +68,7 @@ class Api {
   async getUserTicket(id: string) {
     try {
       const response = await axios.get(`${this.baseUrl2}/${id}/books`);
-
-      console.log("model----> : " + response);
-      return response.data;
+      return response;
     } catch (error: any) {
       throw new Error(`fetching user tickets: ${error.message}`);
     }
@@ -95,10 +96,18 @@ class Api {
     }
   }
 
-  async cancelBooking(id) {
+  async cancelBooking(id: string) {
     try {
-      const response = await axios.post(`${this.baseUrl}/${id}/cancel-booking`);
-      return response.data;
+      const response = await axios.post(
+        `${this.baseUrl3}/${id}/cancel-booking`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response;
     } catch (error: any) {
       throw new Error(`Error canceling booking: ${error.message}`);
     }

@@ -1,9 +1,13 @@
 import { Money } from "@mui/icons-material";
-import { Button, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import { IBooking } from "../constants/types";
 import { formatDate } from "../services/formatter";
+import { useEffect, useState } from "react";
+import Api from "../services/api";
+import { ToastContainer, toast } from "react-toastify";
 
 const BookingCard = ({ ticket }: { ticket: IBooking }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
   const {
     event: { location, date, name },
     numTickets,
@@ -12,6 +16,27 @@ const BookingCard = ({ ticket }: { ticket: IBooking }) => {
   const { date: newDate, month, year } = formatDate(date);
 
   const formated = `${newDate},${month},${year}`;
+
+  const api = new Api();
+
+  const handleCancelBooking = async () => {
+    try {
+      setIsDeleting(true);
+      const response = await api.cancelBooking(ticket._id);
+
+      toast.success("Successfuly cancelled Ticket", { autoClose: 1000 });
+
+      console.log("from cancel booking ----> : ", response);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong try again later", { autoClose: 1000 });
+      setIsDeleting(false);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-4">
@@ -29,9 +54,19 @@ const BookingCard = ({ ticket }: { ticket: IBooking }) => {
         <Button variant="contained" color="primary" size="small">
           View Detail
         </Button>
-        <Button variant="contained" color="error" size="small">
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          startIcon={
+            isDeleting && <CircularProgress size={"small"} color="success" />
+          }
+          disabled={isDeleting}
+          onClick={handleCancelBooking}
+        >
           Cancel
         </Button>
+        <ToastContainer />
       </div>
     </div>
   );

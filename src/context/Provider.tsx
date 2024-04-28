@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ReactNode, useState } from "react";
 import { IBooking, IEvent, IUser } from "../constants/types";
+import { useNavigate } from "react-router-dom";
 
 interface AppContextProps {
   isBooking: boolean;
@@ -17,6 +18,7 @@ interface AppContextProps {
   setCurrentEvent: React.Dispatch<IEvent>;
   bookings: IBooking[];
   setBookings: React.Dispatch<IBooking[]>;
+  logout: () => void;
 }
 
 const initialState = {
@@ -34,6 +36,7 @@ const initialState = {
   setCurrentEvent: () => {},
   bookings: [],
   setBookings: () => {},
+  logout: () => {},
 };
 
 export const AppContext = React.createContext<AppContextProps>(initialState);
@@ -46,6 +49,19 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [refetch, setRefetch] = useState<boolean>(false);
   const [currentEvent, setCurrentEvent] = useState<IEvent | null>(null);
   const [bookings, setBookings] = useState<IBooking[]>([]);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setSelectedEvent(null);
+    setBookings([]);
+    setIsBooking(false);
+    setRefetch(false);
+    return navigate("/");
+  };
 
   return (
     <AppContext.Provider
@@ -64,6 +80,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setCurrentEvent,
         bookings,
         setBookings,
+        logout,
       }}
     >
       {children}
