@@ -5,9 +5,9 @@ import { IEvent } from "../constants/types";
 const token = localStorage.getItem("token");
 
 class Api {
-  // private baseUrl: string =
-  // "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
-  private baseUrl: string = "http://localhost:4000/api/v1/events";
+  private baseUrl: string =
+    "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
+  // private baseUrl: string = "http://localhost:4000/api/v1/events";
 
   async getAllEvents() {
     try {
