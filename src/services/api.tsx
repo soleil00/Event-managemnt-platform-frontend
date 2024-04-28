@@ -5,9 +5,9 @@ import { IEvent } from "../constants/types";
 const token = localStorage.getItem("token");
 
 class Api {
-  private baseUrl: string =
-    "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
-  // private baseUrl: string = "http://localhost:4000/api/v1/events";
+  // private baseUrl: string =
+  // "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
+  private baseUrl: string = "http://localhost:4000/api/v1/events";
 
   async getAllEvents() {
     try {
@@ -91,12 +91,20 @@ class Api {
     }
   }
 
-  async bookEvent(id) {
+  async bookEvent(id: string, numTickets: number) {
     try {
-      const response = await axios.post(`${this.baseUrl}/${id}/book`);
+      const response = await axios.post(
+        `${this.baseUrl}/${id}/book`,
+        { numTickets },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
     } catch (error: any) {
-      throw new Error(`Error booking event: ${error.message}`);
+      throw new Error(`Error booking event: ${error.toString()}`);
     }
   }
 }
