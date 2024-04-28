@@ -20,24 +20,24 @@ export const categories: ICategory[] = [
     id: 3,
     name: "Comedy",
   },
-  {
-    id: 4,
-    name: "Technology",
-  },
-  {
-    id: 5,
-    name: "Fashion",
-  },
-  {
-    id: 6,
-    name: "Food",
-  },
-  {
-    id: 7,
-    name: "Lifestyle",
-  },
-  {
-    id: 8,
-    name: "Education",
-  },
+  // {
+  //   id: 4,
+  //   name: "Technology",
+  // },
+  // {
+  //   id: 5,
+  //   name: "Fashion",
+  // },
+  // {
+  //   id: 6,
+  //   name: "Food",
+  // },
+  // {
+  //   id: 7,
+  //   name: "Lifestyle",
+  // },
+  // {
+  //   id: 8,
+  //   name: "Education",
+  // },
 ];

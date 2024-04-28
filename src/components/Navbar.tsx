@@ -1,10 +1,17 @@
 import { CatchingPokemon, MenuOutlined } from "@mui/icons-material";
 import { IconButton, Stack } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/Provider";
+import { ClientDrawer } from "./drawers/ClientDrawer";
 
 export const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   const { isLoggedIn, setCurrentUser, setIsLoggedIn, currentUser } =
     useContext(AppContext);
   const navigate = useNavigate();
@@ -73,9 +80,11 @@ export const Navbar = () => {
           display: { xs: "block", sm: "block", md: "none" },
           color: "white",
         }}
+        onClick={() => setOpen(!open)}
       >
         <MenuOutlined fontSize="small" />
       </IconButton>
+      <ClientDrawer handleToggle={handleToggle} open={open} />
     </nav>
   );
 };

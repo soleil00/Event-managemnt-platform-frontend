@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from "react";
-import { Close, Upload } from "@mui/icons-material";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { CardMembership, Close, Upload } from "@mui/icons-material";
+import { Button, MenuItem, Stack, TextField, Typography } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "../../../services/api";
@@ -18,6 +18,8 @@ export const CreateEvent = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [termsAndConditions, setTermsAndConditions] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [price, setPrice] = useState(0);
+  const [eventType, setEventType] = useState("free");
 
   const eventService = new Api();
 
@@ -60,7 +62,7 @@ export const CreateEvent = () => {
       formdata.append("description", description);
       formdata.append("type", medium);
       formdata.append("location", location);
-      formdata.append("price", "3");
+      formdata.append("price", `${price}`);
       formdata.append("date", startDate);
       formdata.append("numTickets", numTickets);
       formdata.append("term", termsAndConditions);
@@ -144,27 +146,69 @@ export const CreateEvent = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="medium"
-            className="block text-sm font-medium text-[#737373]"
-          >
-            Medium
-          </label>
-          <Stack direction={"row"} spacing={2} mt={"20px"}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => setMedium("online")}
+          <Stack direction={"row"} spacing={2} mt={"10px"}>
+            <TextField
+              select
+              fullWidth
+              label="Medium"
+              size="small"
+              InputProps={{ sx: { borderRadius: "20px" } }}
+              value={medium}
+              onChange={(e) => setMedium(e.target.value)}
             >
-              Online
-            </Button>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => setMedium("offline")}
+              <MenuItem value="online">Online</MenuItem>
+              <MenuItem value="offline">Offline</MenuItem>
+              <MenuItem value="hybrid">Hybrid</MenuItem>
+            </TextField>
+            <TextField
+              select
+              fullWidth
+              label="Event Type"
+              size="small"
+              InputProps={{ sx: { borderRadius: "20px" } }}
+              value={eventType}
+              onChange={(e) => setEventType(e.target.value)}
             >
-              Offline
-            </Button>
+              <MenuItem value="free">Free</MenuItem>
+              <MenuItem value="paid">Paid</MenuItem>
+            </TextField>
+          </Stack>
+          <Stack direction={"row"} spacing={2} mt={"10px"}>
+            {eventType === "paid" && (
+              <TextField
+                fullWidth
+                type="number"
+                label="Ticket Price"
+                size="small"
+                InputProps={{
+                  endAdornment: <p>$</p>,
+                  sx: { borderRadius: "20px" },
+                }}
+                value={price}
+                onChange={(e) => setPrice(parseFloat(e.target.value))}
+              />
+            )}
+
+            <TextField
+              id="numTickets"
+              name="numTickets"
+              label="Number of tickets"
+              type="number"
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <Stack>
+                    <CardMembership />
+                  </Stack>
+                ),
+                sx: { borderRadius: "20px" },
+              }}
+              fullWidth
+              size="small"
+              value={numTickets}
+              onChange={(e) => setNumTickets(e.target.value)}
+              focused={false}
+            />
           </Stack>
         </div>
         <div className="mb-4">
@@ -229,27 +273,7 @@ export const CreateEvent = () => {
             focused={false}
           />
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="numTickets"
-            className="block text-sm font-medium text-[#737373]"
-          >
-            Tickets
-          </label>
-          <TextField
-            id="numTickets"
-            name="numTickets"
-            type="number"
-            variant="outlined"
-            fullWidth
-            size="small"
-            value={numTickets}
-            onChange={(e) => setNumTickets(e.target.value)}
-            InputProps={{ sx: { borderRadius: "20px" } }}
-            placeholder="Number of Tickets or Seats"
-            focused={false}
-          />
-        </div>
+
         <div className="mb-4">
           <label
             htmlFor="image"
