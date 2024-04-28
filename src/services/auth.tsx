@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { IUser } from "../constants/types";
+import { IBooking, IUser } from "../constants/types";
 
 interface UserData {
   email: string;
@@ -19,6 +19,7 @@ export interface IResponse {
   message: string;
   token: string;
   user: IUser;
+  bookings: IBooking[];
 }
 
 class Auth {
@@ -36,10 +37,7 @@ class Auth {
 
   async login(credentials: LoginCredentials) {
     try {
-      const response = await axios.post<IResponse>(
-        `${this.baseUrl}/login`,
-        credentials
-      );
+      const response = await axios.post(`${this.baseUrl}/login`, credentials);
       return response.data;
     } catch (error: any) {
       throw error.response.data;

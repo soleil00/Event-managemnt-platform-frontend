@@ -6,10 +6,12 @@ import { Security } from "../../../components/Security";
 import { useContext, useEffect } from "react";
 import Auth from "../../../services/auth";
 import { AppContext } from "../../../context/Provider";
+import Api from "../../../services/api";
 
 export const HomePage = () => {
   const authService = new Auth();
-  const { setCurrentUser, setIsLoggedIn } = useContext(AppContext);
+  const eventService = new Api();
+  const { setCurrentUser, setIsLoggedIn, setBookings } = useContext(AppContext);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getUser = async () => {
@@ -17,6 +19,8 @@ export const HomePage = () => {
     try {
       const response = await authService.verifyToken(token!);
       setCurrentUser(response.user);
+      const res = await eventService.getUserTicket(response.user._id);
+      setBookings(res?.bookings);
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error);

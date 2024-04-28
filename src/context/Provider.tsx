@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ReactNode, useState } from "react";
-import { IEvent, IUser } from "../constants/types";
+import { IBooking, IEvent, IUser } from "../constants/types";
 
 interface AppContextProps {
   isBooking: boolean;
@@ -14,6 +15,8 @@ interface AppContextProps {
   setRefetch: React.Dispatch<boolean>;
   currentEvent: IEvent | null;
   setCurrentEvent: React.Dispatch<IEvent>;
+  bookings: IBooking[];
+  setBookings: React.Dispatch<IBooking[]>;
 }
 
 const initialState = {
@@ -29,6 +32,8 @@ const initialState = {
   setRefetch: () => {},
   currentEvent: null,
   setCurrentEvent: () => {},
+  bookings: [],
+  setBookings: () => {},
 };
 
 export const AppContext = React.createContext<AppContextProps>(initialState);
@@ -40,6 +45,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [selectedEvent, setSelectedEvent] = useState<IEvent | null>(null);
   const [refetch, setRefetch] = useState<boolean>(false);
   const [currentEvent, setCurrentEvent] = useState<IEvent | null>(null);
+  const [bookings, setBookings] = useState<IBooking[]>([]);
 
   return (
     <AppContext.Provider
@@ -56,6 +62,8 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setRefetch,
         currentEvent,
         setCurrentEvent,
+        bookings,
+        setBookings,
       }}
     >
       {children}

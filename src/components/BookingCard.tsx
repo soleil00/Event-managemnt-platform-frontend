@@ -1,14 +1,23 @@
 import { Money } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
+import { IBooking } from "../constants/types";
+import { formatDate } from "../services/formatter";
 
-const BookingCard = ({ event }) => {
-  const { eventName, eventDate, eventLocation, numTickets } = event;
+const BookingCard = ({ ticket }: { ticket: IBooking }) => {
+  const {
+    event: { location, date, name },
+    numTickets,
+  } = ticket;
+
+  const { date: newDate, month, year } = formatDate(date);
+
+  const formated = `${newDate},${month},${year}`;
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-4">
-      <h2 className="text-xl font-semibold">{eventName}</h2>
-      <p className="text-gray-600 mb-2">Date: {eventDate}</p>
-      <p className="text-gray-600 mb-4">Location: {eventLocation}</p>
+      <h2 className="text-xl font-semibold">{name}</h2>
+      <p className="text-gray-600 mb-2">{formated}</p>
+      <p className="text-gray-600 mb-4">Location: {location}</p>
       <div className="flex items-center mb-4">
         <span className="mr-2 text-gray-600">Tickets: {numTickets}</span>
       </div>

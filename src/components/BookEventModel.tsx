@@ -15,8 +15,14 @@ import Api from "../services/api";
 import { toast } from "react-toastify";
 
 export const BookEventModel = () => {
-  const { isBooking, setIsBooking, currentEvent, isLoggedIn } =
-    useContext(AppContext);
+  const {
+    isBooking,
+    setIsBooking,
+    currentEvent,
+    isLoggedIn,
+    currentUser,
+    setBookings,
+  } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const [num, setNum] = useState(1);
 
@@ -31,9 +37,15 @@ export const BookEventModel = () => {
       toast.error("Please login to book an event", { autoClose: 1000 });
       return;
     }
+
     try {
       setIsLoading(true);
       const response = await eventService.bookEvent(currentEvent._id, num);
+
+      const res = await eventService.getUserTicket(currentUser._id);
+
+      setBookings(res?.bookings);
+
       setIsBooking(false);
       toast.success(response.message, { autoClose: 1000 });
       currentEvent.numTickets -= num;

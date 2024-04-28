@@ -3,7 +3,7 @@ import { ICategory } from "./categories";
 export interface IBooking {
   _id: string;
   user: string;
-  event: string;
+  event: IEvent;
   numTickets: number;
   createdAt?: Date;
   updatedAt?: Date;

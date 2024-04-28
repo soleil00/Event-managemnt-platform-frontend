@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CatchingPokemon, KeyboardArrowLeft } from "@mui/icons-material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Auth from "../../services/auth";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,7 +13,8 @@ export const SigninForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { setCurrentUser, setIsLoggedIn } = useContext(AppContext);
+  const { setCurrentUser, setIsLoggedIn, setBookings, bookings } =
+    useContext(AppContext);
 
   const authSrvice = new Auth();
 
@@ -41,6 +42,9 @@ export const SigninForm = () => {
         setIsLoggedIn(true);
         localStorage.setItem("token", response.token);
 
+        setBookings(response.bookings);
+        console.log(response);
+
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -57,7 +61,9 @@ export const SigninForm = () => {
       setIsLoading(false);
     }
   };
-
+  useEffect(() => {
+    console.log("Updated bookings:", bookings);
+  }, [bookings]);
   return (
     <div className=" max-w-full h-[100vh] bg-white justify-center items-center flex relative">
       <Link to="/" className=" absolute top-6 left-6">

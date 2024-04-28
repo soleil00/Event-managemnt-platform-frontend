@@ -1,21 +1,56 @@
-import { Grid } from "@mui/material";
-// import { Link } from "react-router-dom";
+import { CircularProgress, Grid } from "@mui/material";
 import BookingCard from "../../../components/BookingCard";
-import { dummyBookings } from "../../../constants/bookings";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../../context/Provider";
+import Api from "../../../services/api";
+import { IBooking } from "../../../constants/types";
 
 export const UserDashboard = () => {
+  const { currentUser } = useContext(AppContext);
+  const [bookings, setBooking] = useState<IBooking[] | []>([]);
+  const [isLoading, setIsloading] = useState(false);
+
+  const api = new Api();
+
+  const get = async () => {
+    try {
+      setIsloading(true);
+      const res = await api.getUserTicket(currentUser._id);
+      setBooking(res?.bookings);
+    } catch (error) {
+      setIsloading(false);
+      console.log(error);
+    } finally {
+      setIsloading(false);
+    }
+  };
+
+  useEffect(() => {
+    get();
+  }, []);
   return (
     <div className="common">
-      <Grid container spacing={{ xs: 2, md: 3 }}>
-        {dummyBookings.map((event) => (
-          <Grid item xs={12} sm={4} md={3} key={event.id}>
-            {/* <Link to={`/event/${event.id}`}>
-              <EventCard />
-            </Link> */}
-            <BookingCard event={event} />
-          </Grid>
-        ))}
-      </Grid>
+      {isLoading ? (
+        <div className=" w-full h-full flex justify-center items-center">
+          <CircularProgress className="" />
+        </div>
+      ) : (
+        <>
+          {bookings.length > 0 ? (
+            <Grid container spacing={{ xs: 2, md: 3 }}>
+              {bookings.map((ticket) => (
+                <Grid item xs={12} sm={4} md={3} key={ticket._id}>
+                  <BookingCard ticket={ticket} />
+                </Grid>
+              ))}
+            </Grid>
+          ) : (
+            <div className=" w-full h-full flex justify-center items-center">
+              <p>No Ticket</p>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

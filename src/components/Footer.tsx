@@ -5,13 +5,18 @@ import {
   LinkedIn,
 } from "@mui/icons-material";
 import { Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Footer = () => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-[#0D162E] ">
+    <div className="bg-[#0D162E] mt-auto">
       <footer className="flex justify-between items-center bg-[#0D162E] p-[20px] common ">
-        <Stack direction={"row"} className="justify-center items-center gap-1">
+        <Stack
+          direction={"row"}
+          className="justify-center items-center gap-1"
+          onClick={() => navigate("/")}
+        >
           <CatchingPokemon className="text-white" />
           <h4 className="text-white">SpotLight</h4>
         </Stack>

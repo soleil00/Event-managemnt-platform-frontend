@@ -1,27 +1,29 @@
 import { CatchingPokemon, MenuOutlined } from "@mui/icons-material";
 import { IconButton, Stack } from "@mui/material";
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/Provider";
 
 export const Navbar = () => {
   const { isLoggedIn, setCurrentUser, setIsLoggedIn, currentUser } =
     useContext(AppContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setCurrentUser(null);
     setIsLoggedIn(false);
+    navigate("/");
   };
-
-  useEffect(() => {
-    console.log(" from nav bar check ---> ", currentUser);
-  }, [currentUser]);
 
   console.log;
   return (
     <nav className="items-center bg-[#0D162E] p-[20px] flex justify-between">
-      <Stack direction={"row"} className="justify-center items-center gap-1">
+      <Stack
+        direction={"row"}
+        className="justify-center items-center gap-1"
+        onClick={() => navigate("/")}
+      >
         <CatchingPokemon className="text-white" />
         <h4 className="text-white">SpotLight</h4>
       </Stack>

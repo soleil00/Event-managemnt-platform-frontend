@@ -7,7 +7,10 @@ const token = localStorage.getItem("token");
 class Api {
   private baseUrl: string =
     "https://event-managemnt-platform-backend.onrender.com/api/v1/events";
+  private baseUrl2: string =
+    "https://event-managemnt-platform-backend.onrender.com/api/v1/users";
   // private baseUrl: string = "http://localhost:4000/api/v1/events";
+  // private baseUrl2: string = "http://localhost:4000/api/v1/users";
 
   async getAllEvents() {
     try {
@@ -57,6 +60,16 @@ class Api {
       return response.data;
     } catch (error: any) {
       throw new Error(`Error deleting event: ${error.message}`);
+    }
+  }
+  async getUserTicket(id: string) {
+    try {
+      const response = await axios.get(`${this.baseUrl2}/${id}/books`);
+
+      console.log("model----> : " + response);
+      return response.data;
+    } catch (error: any) {
+      throw new Error(`fetching user tickets: ${error.message}`);
     }
   }
 
