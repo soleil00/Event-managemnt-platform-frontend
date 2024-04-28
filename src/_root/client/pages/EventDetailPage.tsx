@@ -7,6 +7,7 @@ import { BookEventModel } from "../../../components/BookEventModel";
 import Api from "../../../services/api";
 import { useState, useEffect } from "react";
 import { EventSkeleton } from "../../../components/skeleton/currentEventSkeleton";
+import { ToastContainer } from "react-toastify";
 
 export const EventDetailPage = () => {
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -48,6 +49,7 @@ export const EventDetailPage = () => {
         </Stack>
       )}
       <BookEventModel />
+      <ToastContainer />
     </div>
   );
 };
