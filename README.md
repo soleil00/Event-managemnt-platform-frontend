@@ -19,9 +19,9 @@ Welcome to the showcase of my Event Management Platform project! This project wa
 This project was built using the MERN (MongoDB, Express.js, React.js, Node.js) stack additional with Vite and Typescript.
 
 ## Links
-- **Frontend Deployment:** [Link to deployed frontend](https://event-managemnt-platform-frontend.vercel.app/)(#) (to be inserted)
-- **Backend Repository:** [Link to Frontend repository](https://github.com/soleil00/Event-managemnt-platform-frontend)(#) (to be inserted)
-- **Frontend Repository:** [Link to Backend repository](https://github.com/soleil00/Event-managemnt-platform-backend)(#) (to be inserted)
+- **Frontend Deployment:** [Link to deployed frontend](https://event-managemnt-platform-frontend.vercel.app/)
+- **Backend Repository:** [Link to Frontend repository](https://github.com/soleil00/Event-managemnt-platform-frontend) 
+- **Frontend Repository:** [Link to Backend repository](https://github.com/soleil00/Event-managemnt-platform-backend) 
 
 Thank you for checking out my Event Management Platform project showcase! 🎉
 
