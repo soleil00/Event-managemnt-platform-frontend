@@ -27,6 +27,7 @@ export interface IEvent {
   description: string;
   date: string;
   location: string;
+  term?: string;
   category: ICategory;
   image: string;
   numTickets: number;

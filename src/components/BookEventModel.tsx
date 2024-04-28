@@ -6,34 +6,44 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/Provider";
 
 export const BookEventModel = () => {
-  const { isBooking, setIsBooking } = useContext(AppContext);
+  const { isBooking, setIsBooking, currentEvent } = useContext(AppContext);
+  const [num, setNum] = useState(0);
+
+  const handleClose = () => {
+    setIsBooking(false);
+    setNum(0);
+  };
   return (
     <Box>
-      <Dialog open={isBooking} fullWidth onClose={() => setIsBooking(false)}>
+      <Dialog open={isBooking} fullWidth onClose={handleClose}>
         <DialogTitle className="text-center">Book Event</DialogTitle>
         <DialogContent>
-          {/* <TextField label="Full Name" fullWidth margin="normal" />
-          <TextField label="Email" fullWidth margin="normal" /> */}
+          <Typography>Available Tickets, {currentEvent.numTickets}</Typography>
           <TextField
             label="Number of Tickets"
             fullWidth
+            value={num}
+            onChange={(e) => setNum(parseInt(e.target.value))}
             margin="normal"
             type="number"
+            disabled={num > currentEvent.numTickets}
           />
-          {/* <TextField
-            label="Additional Comments"
-            fullWidth
-            multiline
-            rows={4}
-            margin="normal"
-          /> */}
+
           <DialogActions>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              disabled={
+                currentEvent.status === "ENDED" ||
+                currentEvent.status === "CANCELED"
+              }
+            >
               Book Event
             </Button>
           </DialogActions>

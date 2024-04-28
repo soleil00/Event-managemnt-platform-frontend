@@ -12,6 +12,8 @@ interface AppContextProps {
   setSelectedEvent: React.Dispatch<IEvent>;
   refetch: boolean;
   setRefetch: React.Dispatch<boolean>;
+  currentEvent: IEvent | null;
+  setCurrentEvent: React.Dispatch<IEvent>;
 }
 
 const initialState = {
@@ -25,6 +27,8 @@ const initialState = {
   setSelectedEvent: () => {},
   refetch: false,
   setRefetch: () => {},
+  currentEvent: null,
+  setCurrentEvent: () => {},
 };
 
 export const AppContext = React.createContext<AppContextProps>(initialState);
@@ -35,6 +39,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<IEvent | null>(null);
   const [refetch, setRefetch] = useState<boolean>(false);
+  const [currentEvent, setCurrentEvent] = useState<IEvent | null>(null);
 
   return (
     <AppContext.Provider
@@ -49,6 +54,8 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setSelectedEvent,
         refetch,
         setRefetch,
+        currentEvent,
+        setCurrentEvent,
       }}
     >
       {children}
