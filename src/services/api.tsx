@@ -36,9 +36,9 @@ class Api {
     }
   }
 
-  async getSingleEvent(id) {
+  async getSingleEvent(id: string) {
     try {
-      const response = await axios.get(`${this.baseUrl}/events/${id}`);
+      const response = await axios.get(`${this.baseUrl}/${id}`);
       return response.data;
     } catch (error: any) {
       throw new Error(`Error fetching event: ${error.message}`);

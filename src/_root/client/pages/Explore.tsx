@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import "../../../styles/explore.css";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { IEvent } from "../../../constants/types";
 
 export const Explore = () => {
   const [events, setEvents] = useState([]);
@@ -21,6 +22,8 @@ export const Explore = () => {
   const navigate = useNavigate();
 
   const eventService = new Api();
+
+  const { setCurrentEvent } = useContext(AppContext);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchEvents = async () => {
@@ -39,6 +42,12 @@ export const Explore = () => {
       .then((ev) => ev)
       .catch((error) => console.log(error));
   }, [fetchEvents, refetch]);
+
+  const handleClick = (event: IEvent) => {
+    setCurrentEvent(event);
+    navigate(`/event/${event._id}`);
+  };
+
   return (
     <div className="bg-white">
       <div className="common">
@@ -74,7 +83,7 @@ export const Explore = () => {
                   <SwiperSlide
                     key={event.name}
                     className=" bg-white rounded-lg"
-                    onClick={() => navigate(`/event/${event._id}`)}
+                    onClick={() => handleClick(event)}
                   >
                     <EventCard event={event} />
                   </SwiperSlide>
