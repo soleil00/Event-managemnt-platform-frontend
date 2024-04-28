@@ -1,4 +1,7 @@
 
+<img width="1439" alt="Screenshot 2024-04-28 at 12 46 38" src="https://github.com/soleil00/Event-managemnt-platform-frontend/assets/105858896/a9603c07-636b-4e72-901f-afdcae39a0ca">
+<img width="1436" alt="Screenshot 2024-04-28 at 12 47 42" src="https://github.com/soleil00/Event-managemnt-platform-frontend/assets/105858896/822c4ce0-a526-40e5-abe9-e56c7d69a441">
+<img width="327" alt="Screenshot 2024-04-28 at 12 48 25" src="https://github.com/soleil00/Event-managemnt-platform-frontend/assets/105858896/e6961f5d-1d3e-4dbb-9a3d-ae081d96f23c">
 
 # My Event Management Platform Showcase 
 
