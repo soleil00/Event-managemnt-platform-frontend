@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/Provider";
 import Api from "../../../services/api";
 import { IBooking } from "../../../constants/types";
+import { ToastContainer } from "react-toastify";
 
 export const UserDashboard = () => {
   const { currentUser } = useContext(AppContext);
@@ -11,6 +12,10 @@ export const UserDashboard = () => {
   const [isLoading, setIsloading] = useState(false);
 
   const api = new Api();
+
+  const handleDelete = (tikc: IBooking) => {
+    setBooking((pre) => pre.filter((tick) => tick._id !== tikc._id));
+  };
 
   const get = async () => {
     try {
@@ -44,7 +49,7 @@ export const UserDashboard = () => {
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {bookings.map((ticket) => (
                 <Grid item xs={12} sm={4} md={3} key={ticket._id}>
-                  <BookingCard ticket={ticket} />
+                  <BookingCard ticket={ticket} afterDelete={handleDelete} />
                 </Grid>
               ))}
             </Grid>
@@ -55,6 +60,7 @@ export const UserDashboard = () => {
           )}
         </>
       )}
+      <ToastContainer />
     </div>
   );
 };
